@@ -1,0 +1,28 @@
+---
+- name: Adding tags to EC2 instances
+  connection: local
+  hosts: all
+  gather_facts: false
+  tasks:
+    - debug:
+        msg: "Instance Name {{ tags.Name }}"
+
+    - name: Adding required tags
+      amazon.aws.ec2_tag:
+        profile: 663982073101_appd-aws-663982073101-dev
+        region: eu-central-1
+        resource: "{{ instance_id }}"
+        tags:
+          ResourceOwner: 'asienski@cisco.com'
+          JIRAProject: 'NA'
+          DataClassification: 'Cisco Highly Confidential'
+          JIRACreation: 'NA'
+          SecurityReview: 'NA'
+          Exception: 'NA'
+          DeploymentEnvironment: 'NonProd'
+          CreatedBy: 'asienski@cisco.com'
+        state: present
+        #purge_tags: true
+
+
+

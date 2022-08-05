@@ -1,0 +1,17 @@
+# Example using filters, ignoring permission errors, and specifying the hostname precedence
+plugin: aws_ec2
+# The values for profile, access key, secret key and token can be hardcoded like:
+boto_profile: 663982073101_appd-aws-663982073101-dev
+# or you could use Jinja as:
+# boto_profile: "{{ lookup('env', 'AWS_PROFILE') | default('aws_profile', true) }}"
+# Populate inventory with instances in these regions
+regions:
+  - eu-central-1
+
+filters:
+  # key-name - The name of the key pair used when the instance was launched.
+  key-name: asienski-appd
+  #  The key of a tag assigned to the resource. Use this filter to find all resources that have a tag with a specific key, regardless of the tag value.
+  #tag-key: msztorc
+  # All instances with their `Environment` tag set to `dev`
+  #tag:Environment: dev
