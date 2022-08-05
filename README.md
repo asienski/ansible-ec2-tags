@@ -17,7 +17,9 @@ enable_plugins = aws_ec2
 ```
 
 ### Configure AWS access
-hosts.aws_ec2.yml
+```
+vim hosts.aws_ec2.yml
+```
 
 ### Run
 ```
